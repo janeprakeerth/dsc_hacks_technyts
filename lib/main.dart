@@ -1,4 +1,7 @@
 import 'package:dsc_hacks_technyts/pages/Login.dart';
+import 'package:dsc_hacks_technyts/pages/SignUp.dart';
+import 'package:dsc_hacks_technyts/pages/StartPage.dart';
+import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:dsc_hacks_technyts/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      color: AppColors.mainColor,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  Login(),
+      home: SignUp(),
     );
   }
 }

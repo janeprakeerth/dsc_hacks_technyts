@@ -35,29 +35,29 @@ class _LoginState extends State<Login> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 40.0),
                           child: Text("WELCOME BACK..." , style: TextStyle(
-                            color: Colors.white ,
-                            fontSize: height*0.025
+                              color: Colors.white ,
+                              fontSize: height*0.025
                           ),),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(40.0),
-                            bottomRight: Radius.circular(40.0))
-                            ,color: AppColors.mainColor
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(40.0),
+                              bottomRight: Radius.circular(40.0))
+                          ,color: AppColors.mainColor
 
                       ),
 
                     ),
                     SizedBox(height: height*0.06, width: width*0.05),
                     Container(
-                      padding: EdgeInsets.all(width*0.015),
+                        padding: EdgeInsets.all(width*0.015),
                         height: height*0.06,
                         width:width*0.2 ,
-                     child:  Image.network(
-                         'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
+                        child:  Image.network(
+                            'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif')
                     )
-                    ],
+                  ],
                 ),
                 Container(
                   height: height*0.08,
@@ -67,8 +67,8 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(
                         "Enter your email id to continue...",style: TextStyle(
-                        overflow : TextOverflow.ellipsis,
-                        fontSize: height*0.02 , fontWeight: FontWeight.bold,color: Colors.black
+                          overflow : TextOverflow.ellipsis,
+                          fontSize: height*0.02 , fontWeight: FontWeight.bold,color: Colors.black
                       ),
                       ),
                     ),
@@ -140,59 +140,59 @@ class _LoginState extends State<Login> {
                   child: Center(
                     child: Text(
                       "SIGN IN" , style: TextStyle(
-                      color: Colors.white , fontWeight: FontWeight.bold,
-                      fontSize: height*0.028
+                        color: Colors.white , fontWeight: FontWeight.bold,
+                        fontSize: height*0.028
                     ),
                     ),
                   ),
                 ),
                 Container(
-                  height: height*0.04,
-                  child: Center(child: Text("Forgot Your Password?"
-                  ,style: TextStyle(color: Colors.black , fontSize: height*0.019)),
-                )
+                    height: height*0.04,
+                    child: Center(child: Text("Forgot Your Password?"
+                        ,style: TextStyle(color: Colors.black , fontSize: height*0.019)),
+                    )
                 ),
                 SizedBox(height: height*0.12,),
                 Container(
                   height: height*0.04,
                   //width: width,
                   child: Row(
-                      children: [
-                        Container(
-                          width: width*0.33,
-                          padding: EdgeInsets.all(width*0.025),
-                          child: Center(
-                            child: Container(
+                    children: [
+                      Container(
+                        width: width*0.33,
+                        padding: EdgeInsets.all(width*0.025),
+                        child: Center(
+                          child: Container(
 
-                              height: height*0.001,
-                              width: width*0.25,
-                              color: Colors.black,
-                            ),
+                            height: height*0.001,
+                            width: width*0.25,
+                            color: Colors.black,
                           ),
                         ),
-                        Container(width: width*0.33,
-                            child: Center(child: Text("or Sign In with",overflow: TextOverflow.ellipsis,style:
-                              TextStyle(
-                                color: Colors.black ,
-                                fontWeight: FontWeight.bold,
-                                fontSize: height*0.02
-                              ),) ,
-                            )),
-                        Container(
-                          width: width*0.33,
-                          padding: EdgeInsets.all(width*0.025),
-                          child: Center(
-                            child: Container(
+                      ),
+                      Container(width: width*0.33,
+                          child: Center(child: Text("or Sign In with",overflow: TextOverflow.ellipsis,style:
+                          TextStyle(
+                              color: Colors.black ,
+                              fontWeight: FontWeight.bold,
+                              fontSize: height*0.02
+                          ),) ,
+                          )),
+                      Container(
+                        width: width*0.33,
+                        padding: EdgeInsets.all(width*0.025),
+                        child: Center(
+                          child: Container(
 
-                              height: height*0.001,
-                              width: width*0.25,
-                              color: Colors.black,
-                            ),
+                            height: height*0.001,
+                            width: width*0.25,
+                            color: Colors.black,
                           ),
                         ),
+                      ),
 
 
-                      ],
+                    ],
                   ),
                 ),
                 SizedBox(height: height*0.02,),
@@ -204,7 +204,7 @@ class _LoginState extends State<Login> {
                     child: Container(
 
                       child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
