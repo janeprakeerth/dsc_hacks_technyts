@@ -1,3 +1,4 @@
+import 'package:dsc_hacks_technyts/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,6 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    try {
+      print(Dimensions.screenwidth);
+    } catch (e) {
+      print(e);
+    }
+    // print(Dimensions.screenheight);
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
