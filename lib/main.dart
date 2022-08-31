@@ -1,4 +1,5 @@
 import 'package:dsc_hacks_technyts/pages/Login.dart';
+import 'package:dsc_hacks_technyts/pages/SignUp.dart';
 import 'package:dsc_hacks_technyts/pages/StartPage.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:dsc_hacks_technyts/utils/dimensions.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: StartPage(),
+      home: SignUp(),
     );
   }
 }

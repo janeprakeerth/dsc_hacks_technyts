@@ -3,14 +3,18 @@ import 'package:flutter/cupertino.dart';
 
 class BoldText extends StatelessWidget {
   final String text;
-  const BoldText({Key? key, required this.text}) : super(key: key);
+  final double size;
+  const BoldText({Key? key, required this.text, this.size = 15})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style:
-          TextStyle(color: AppColors.BlackColor, fontWeight: FontWeight.w600),
+      style: TextStyle(
+          color: AppColors.BlackColor,
+          fontWeight: FontWeight.w600,
+          fontSize: size),
     );
   }
 }
