@@ -3,9 +3,12 @@ import 'package:dsc_hacks_technyts/pages/SignUp.dart';
 import 'package:dsc_hacks_technyts/pages/StartPage.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:dsc_hacks_technyts/utils/dimensions.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUp(),
+      home: Login(),
     );
   }
 }
