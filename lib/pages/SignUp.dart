@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_hacks_technyts/texts/BoldText.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController mobilenumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -40,7 +46,7 @@ class _SignUpState extends State<SignUp> {
               margin: EdgeInsets.only(
                   left: deviceWidth / 18, right: deviceWidth / 18),
               child: TextField(
-                keyboardType: TextInputType.number,
+                controller: emailcontroller,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
@@ -72,6 +78,7 @@ class _SignUpState extends State<SignUp> {
               margin: EdgeInsets.only(
                   left: deviceWidth / 18, right: deviceWidth / 18),
               child: TextField(
+                controller: password,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                     prefixIcon: Icon(
@@ -105,6 +112,7 @@ class _SignUpState extends State<SignUp> {
               margin: EdgeInsets.only(
                   left: deviceWidth / 18, right: deviceWidth / 18),
               child: TextField(
+                controller: username,
                 maxLength: 15,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -135,6 +143,7 @@ class _SignUpState extends State<SignUp> {
               margin: EdgeInsets.only(
                   left: deviceWidth / 18, right: deviceWidth / 18),
               child: TextField(
+                controller: mobilenumber,
                 keyboardType: TextInputType.number,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
@@ -162,7 +171,25 @@ class _SignUpState extends State<SignUp> {
               height: 10,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () async {
+               UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailcontroller.text, password: password.text);
+               CollectionReference users  = await FirebaseFirestore.instance.collection("users");
+               String? uid = user.user?.uid.toString();
+                try {
+                  await users.add({
+                    'email': emailcontroller.text,
+                    'password': password.text,
+                    'username': username.text,
+                    'mobile': mobilenumber.text,
+                    'uid' : uid
+                  });
+                }catch(error)
+                {
+                  print(error.toString());
+                }
+               print("user added");
+
+              },
               child: Container(
                 width: deviceWidth,
                 height: deviceHeight / 15.12,
