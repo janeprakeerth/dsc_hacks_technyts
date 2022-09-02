@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^1.21.1
   firebase_auth: ^3.7.0
   cupertino_icons: ^1.0.2
+  curved_navigation_bar: ^1.0.3
 
 dependency_overrides:
   collection: ^1.16.0

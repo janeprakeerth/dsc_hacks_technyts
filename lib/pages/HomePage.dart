@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    var selected_num = 0;
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.mainColor,
+      ),
+      backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.mainColor,
         onPressed: () {
@@ -22,9 +29,23 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
+      bottomNavigationBar: CurvedNavigationBar(onTap: (index){
+        setState(() {
+          selected_num = index;
+
+        });
+      },items: [
+        Icon(Icons.home_outlined ,  color: Colors.black),
+        Icon(Icons.location_on_outlined ,  color:Colors.black),
+        Icon(Icons.car_repair ,  color: Colors.black),
+        Icon(Icons.chat_outlined , color: Colors.black),
+        Icon(Icons.account_circle_outlined ,  color: Colors.black),
+
+      ],backgroundColor: Colors.white,buttonBackgroundColor:Colors.white ,color: AppColors.mainColor,height: 60,),
+
     );
   }
 }

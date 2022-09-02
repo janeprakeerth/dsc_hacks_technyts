@@ -1,6 +1,5 @@
 # dsc_hacks_technyts
 
-A new Flutter project.
 
 ## Getting Started
 

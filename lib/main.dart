@@ -1,3 +1,4 @@
+import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:dsc_hacks_technyts/pages/Login.dart';
 import 'package:dsc_hacks_technyts/pages/SignUp.dart';
 import 'package:dsc_hacks_technyts/pages/StartPage.dart';
@@ -22,10 +23,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       color: AppColors.mainColor,
+
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch:  Colors.red,
       ),
-      home: StartPage(),
+      home: HomePage(),
     );
   }
 }
