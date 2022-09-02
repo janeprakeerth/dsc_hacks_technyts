@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_hacks_technyts/pages/GoogleMaps.dart';
 import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -218,7 +219,7 @@ class _AddAnAmbulanceState extends State<AddAnAmbulance> {
                     'hospital_address': hospital_address_controller.text
                   });
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                      MaterialPageRoute(builder: (context) => GoogleMaps()));
                 } catch (error) {
                   print(error.toString());
                 }
@@ -235,7 +236,7 @@ class _AddAnAmbulanceState extends State<AddAnAmbulance> {
                 ),
                 child: Center(
                   child: Text(
-                    "Submit",
+                    "Continue",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
