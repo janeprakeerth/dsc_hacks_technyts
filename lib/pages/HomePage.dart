@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   Position? currentUserPosition;
   double distanceInMeter = 0.0;
 
@@ -30,13 +31,15 @@ class _HomePageState extends State<HomePage> {
 
     getDistance();
   }
+
+  var selected_num = 0;
+
   @override
   Widget build(BuildContext context) {
-    var selected_num = 0;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
+        title: Text("Home Page"),
       ),
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
@@ -47,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
@@ -57,11 +60,16 @@ class _HomePageState extends State<HomePage> {
           });
         },
         items: [
-          Icon(Icons.home_outlined, color: Colors.black),
-          Icon(Icons.location_on_outlined, color: Colors.black),
-          Icon(Icons.car_repair, color: Colors.black),
-          Icon(Icons.chat_outlined, color: Colors.black),
-          Icon(Icons.account_circle_outlined, color: Colors.black),
+          Icon(Icons.home_outlined,
+              color: selected_num == 0 ? Colors.black : Colors.white),
+          Icon(Icons.location_on_outlined,
+              color: selected_num == 1 ? Colors.black : Colors.white),
+          Icon(Icons.car_repair,
+              color: selected_num == 2 ? Colors.black : Colors.white),
+          Icon(Icons.chat_outlined,
+              color: selected_num == 3 ? Colors.black : Colors.white),
+          Icon(Icons.account_circle_outlined,
+              color: selected_num == 4 ? Colors.black : Colors.white),
         ],
         backgroundColor: Colors.white,
         buttonBackgroundColor: Colors.white,

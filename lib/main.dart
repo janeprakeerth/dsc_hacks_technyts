@@ -1,4 +1,4 @@
-import 'package:dsc_hacks_technyts/pages/GoogleMap.dart';
+import 'package:dsc_hacks_technyts/pages/GoogleMaps.dart';
 import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:dsc_hacks_technyts/pages/Login.dart';
 import 'package:dsc_hacks_technyts/pages/SignUp.dart';

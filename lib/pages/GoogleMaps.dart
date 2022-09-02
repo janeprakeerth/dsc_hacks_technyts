@@ -52,10 +52,21 @@ class _GoogleMapsState extends State<GoogleMaps> {
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
-        title: Text("  Point Your Hospital in the map"),
+        title: Text(
+          "Point Your Hospital in the map",
+          style: TextStyle(fontSize: 16),
+        ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: Container(
         child: Column(
