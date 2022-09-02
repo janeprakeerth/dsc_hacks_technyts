@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
@@ -21,6 +22,20 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home Page"),
       ),
       backgroundColor: Colors.white,
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('ambulances').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          } else {
+            return ListView(
+              children: snapshot.data!.docs.map((document) {
+                return Text(document["latitude"].toString());
+              }).toList(),
+            );
+          }
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.mainColor,
         onPressed: () {

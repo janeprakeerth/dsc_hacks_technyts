@@ -207,19 +207,19 @@ class _AddAnAmbulanceState extends State<AddAnAmbulance> {
             ),
             InkWell(
               onTap: () async {
-                CollectionReference ambulance =
-                    await FirebaseFirestore.instance.collection("ambulances");
                 try {
-                  await ambulance.add({
-                    'hospital_name': name_hospital_controller.text,
-                    'driver_name': name_drive_controller.text,
-                    'driver_mobile_number':
-                        driver_mobile_number_controller.text,
-                    'vehicle_number': vehichle_number_controller.text,
-                    'hospital_address': hospital_address_controller.text
-                  });
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GoogleMaps()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GoogleMaps(
+                                name_of_hospital: name_hospital_controller.text,
+                                name_of_driver: name_drive_controller.text,
+                                driver_mobile_number:
+                                    driver_mobile_number_controller.text,
+                                vehicle_number: vehichle_number_controller.text,
+                                hosptal_address:
+                                    hospital_address_controller.text,
+                              )));
                 } catch (error) {
                   print(error.toString());
                 }
