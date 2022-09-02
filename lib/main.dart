@@ -1,3 +1,4 @@
+import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:dsc_hacks_technyts/pages/Login.dart';
 import 'package:dsc_hacks_technyts/pages/SignUp.dart';
 import 'package:dsc_hacks_technyts/pages/StartPage.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StartPage(),
+      home: HomePage(),
     );
   }
 }
