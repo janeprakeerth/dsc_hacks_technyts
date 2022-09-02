@@ -32,20 +32,24 @@ class _HomePageState extends State<HomePage> {
           color: Colors.black,
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(onTap: (index){
-        setState(() {
-          selected_num = index;
-
-        });
-      },items: [
-        Icon(Icons.home_outlined ,  color: Colors.black),
-        Icon(Icons.location_on_outlined ,  color:Colors.black),
-        Icon(Icons.car_repair ,  color: Colors.black),
-        Icon(Icons.chat_outlined , color: Colors.black),
-        Icon(Icons.account_circle_outlined ,  color: Colors.black),
-
-      ],backgroundColor: Colors.white,buttonBackgroundColor:Colors.white ,color: AppColors.mainColor,height: 60,),
-
+      bottomNavigationBar: CurvedNavigationBar(
+        onTap: (index) {
+          setState(() {
+            selected_num = index;
+          });
+        },
+        items: [
+          Icon(Icons.home_outlined, color: Colors.black),
+          Icon(Icons.location_on_outlined, color: Colors.black),
+          Icon(Icons.car_repair, color: Colors.black),
+          Icon(Icons.chat_outlined, color: Colors.black),
+          Icon(Icons.account_circle_outlined, color: Colors.black),
+        ],
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Colors.white,
+        color: AppColors.mainColor,
+        height: 60,
+      ),
     );
   }
 }
