@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_hacks_technyts/pages/Login.dart';
 import 'package:dsc_hacks_technyts/texts/BoldText.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -172,23 +173,26 @@ class _SignUpState extends State<SignUp> {
             ),
             InkWell(
               onTap: () async {
-               UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailcontroller.text, password: password.text);
-               CollectionReference users  = await FirebaseFirestore.instance.collection("users");
-               String? uid = user.user?.uid.toString();
+                UserCredential user = await FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                        email: emailcontroller.text, password: password.text);
+                CollectionReference users =
+                    await FirebaseFirestore.instance.collection("users");
+                String? uid = user.user?.uid.toString();
                 try {
                   await users.add({
                     'email': emailcontroller.text,
                     'password': password.text,
                     'username': username.text,
                     'mobile': mobilenumber.text,
-                    'uid' : uid
+                    'uid': uid
                   });
-                }catch(error)
-                {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                } catch (error) {
                   print(error.toString());
                 }
-               print("user added");
-
+                print("user added");
               },
               child: Container(
                 width: deviceWidth,

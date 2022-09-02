@@ -1,10 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:dsc_hacks_technyts/pages/SignUp.dart';
 import 'package:dsc_hacks_technyts/texts/BoldText.dart';
 import 'package:dsc_hacks_technyts/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/colors.dart';
+import 'Login.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({Key? key}) : super(key: key);
@@ -82,7 +84,10 @@ class _StartPageState extends State<StartPage> {
             height: deviceHeight / 12.6,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
             child: Container(
               width: deviceWidth,
               height: deviceHeight / 15.12,
@@ -105,7 +110,10 @@ class _StartPageState extends State<StartPage> {
             height: deviceHeight / 75.6,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignUp()));
+            },
             child: Container(
               width: deviceWidth,
               height: deviceHeight / 15.12,
