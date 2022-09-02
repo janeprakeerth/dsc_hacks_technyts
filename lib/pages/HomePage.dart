@@ -3,6 +3,7 @@ import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +13,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Position? currentUserPosition;
+  double distanceInMeter = 0.0;
+
+  Future getDistance() async{
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    currentUserPosition = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(currentUserPosition!.latitude );
+    print(currentUserPosition!.longitude );
+    //print("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+  }
+
+  @override
+  void initState  () {
+
+    getDistance();
+  }
   @override
   Widget build(BuildContext context) {
     var selected_num = 0;

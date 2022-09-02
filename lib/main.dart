@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: GoogleMaps(),
+      home: HomePage(),
     );
   }
 }
