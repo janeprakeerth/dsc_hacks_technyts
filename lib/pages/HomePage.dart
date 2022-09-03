@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'BookAmbulance.dart';
-
 class HomePage extends StatefulWidget {
   final double range;
   const HomePage({Key? key, this.range = 5000}) : super(key: key);
@@ -64,17 +62,17 @@ class _HomePageState extends State<HomePage> {
       double longitude = double.parse(ambulance['longitude']);
       print("okoko$latitude");
       await getDistance(latitude, longitude).then((value) => {
-        if (value == true)
-          {
-            print("prithvinoob"),
-            setState(() {
-              NearAmbulanceList.add(ambulance);
-              print("123${NearAmbulanceList.length}");
-            })
-          }
-        else
-          {print("bdbdbd")}
-      });
+            if (value == true)
+              {
+                print("prithvinoob"),
+                setState(() {
+                  NearAmbulanceList.add(ambulance);
+                  print("123${NearAmbulanceList.length}");
+                })
+              }
+            else
+              {print("bdbdbd")}
+          });
     }
   }
 
@@ -87,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding:
-              const EdgeInsets.only(left: 10.0, right: 10.0, top: 30.0),
+                  const EdgeInsets.only(left: 10.0, right: 10.0, top: 30.0),
               child: Container(
                 height: deviceHeight * 0.1,
                 width: deviceWidth * 0.8,
@@ -103,10 +101,12 @@ class _HomePageState extends State<HomePage> {
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.8,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          SizedBox(
+                            width: deviceWidth * 0.07,
+                          ),
                           Text(
-                            "     ${ambulance['hospital_name']}",
+                            "${ambulance['hospital_name']}",
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.white,
@@ -125,14 +125,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          width: deviceWidth * 0.08,
+                        ),
                         Container(
                           height: deviceHeight * 0.05,
                           child: Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                "     ${ambulance['hospital_address']}",
+                                "${ambulance['hospital_address']}",
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(color: Colors.white),
                               )),
@@ -211,9 +213,7 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 25.0),
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>BookAmbulance()));
-                          },
+                          onTap: () {},
                           child: Container(
                             decoration: BoxDecoration(
                                 color: AppColors.mainColor,
@@ -222,13 +222,13 @@ class _HomePageState extends State<HomePage> {
                             width: deviceWidth * 0.4,
                             child: Center(
                                 child: Text(
-                                  "Book Ambulance",
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: deviceHeight * 0.018),
-                                )),
+                              "Book Ambulance",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: deviceHeight * 0.018),
+                            )),
                           ),
                         ),
                       )
@@ -271,9 +271,9 @@ class _HomePageState extends State<HomePage> {
                   height: 20,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/image/slider.png"),
-                        fit: BoxFit.cover,
-                      ))),
+                    image: AssetImage("assets/image/slider.png"),
+                    fit: BoxFit.cover,
+                  ))),
             )
           ],
         ),
