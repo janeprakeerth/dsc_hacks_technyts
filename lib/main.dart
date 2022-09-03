@@ -1,3 +1,4 @@
+import 'package:dsc_hacks_technyts/pages/BookAmbulance.dart';
 import 'package:dsc_hacks_technyts/pages/GoogleMaps.dart';
 import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:dsc_hacks_technyts/pages/Login.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomePage(),
+      home: BookAmbulance(),
     );
   }
 }

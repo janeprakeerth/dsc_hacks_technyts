@@ -1,14 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:dsc_hacks_technyts/DatabseManger/databasemanager.dart';
 import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
+import 'package:dsc_hacks_technyts/pages/range_selector.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import 'BookAmbulance.dart';
 
+class HomePage extends StatefulWidget {
+  final double range;
+  const HomePage({Key? key, this.range = 5000}) : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -16,7 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Position? currentUserPosition;
 
-  Future<bool> getDistance(double lat, double long) async {
+  Future<dynamic> getDistance(double lat, double long) async {
     LocationPermission permission;
     permission = await Geolocator.requestPermission();
     currentUserPosition = await Geolocator.getCurrentPosition(
@@ -30,167 +34,254 @@ class _HomePageState extends State<HomePage> {
         lat,
         long);
     print("okok$dist_in_metre");
-    if (dist_in_metre > 5000) {
-      return false;
+    if (dist_in_metre > widget.range) {
+      return Future.value(false);
     } else {
       print("returned trueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-      return true;
+      return Future.value(true);
     }
   }
 
-
+  List Ambulanceslist = [];
+  List NearAmbulanceList = [];
   var selected_num = 0;
-  List<QueryDocumentSnapshot> alldata = [];
+  getDatabseList() async {
+    dynamic resultant = await databasemanger().getAmbulanceList();
+    if (resultant != null) {
+      setState(() {
+        Ambulanceslist = resultant;
+      });
+    }
+    getNearAmbulanceList();
+  }
+
+  getNearAmbulanceList() async {
+    print("len${Ambulanceslist.length}");
+    for (int i = 0; i < Ambulanceslist.length; i++) {
+      var ambulance = Ambulanceslist[i];
+
+      double latitude = double.parse(ambulance['latitude']);
+      double longitude = double.parse(ambulance['longitude']);
+      print("okoko$latitude");
+      await getDistance(latitude, longitude).then((value) => {
+        if (value == true)
+          {
+            print("prithvinoob"),
+            setState(() {
+              NearAmbulanceList.add(ambulance);
+              print("123${NearAmbulanceList.length}");
+            })
+          }
+        else
+          {print("bdbdbd")}
+      });
+    }
+  }
+
+  List<Container> getNearesAmbulances(double deviceHeight, double deviceWidth) {
+    List<Container> cont = [];
+    for (int i = 0; i < NearAmbulanceList.length; i++) {
+      var ambulance = NearAmbulanceList[i];
+      var x = Container(
+        child: Column(
+          children: [
+            Padding(
+              padding:
+              const EdgeInsets.only(left: 10.0, right: 10.0, top: 30.0),
+              child: Container(
+                height: deviceHeight * 0.1,
+                width: deviceWidth * 0.8,
+                decoration: BoxDecoration(
+                  color: AppColors.mainColor,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(25.0),
+                      topLeft: Radius.circular(25.0)),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: deviceHeight * 0.05,
+                      width: deviceWidth * 0.8,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "     ${ambulance['hospital_name']}",
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: deviceHeight * 0.02),
+                          ),
+                          SizedBox(
+                            width: deviceWidth * 0.25,
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.wysiwyg_outlined,
+                                color: Colors.white,
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: deviceHeight * 0.05,
+                          child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "     ${ambulance['hospital_address']}",
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(color: Colors.white),
+                              )),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+              child: Container(
+                  height: deviceHeight * 0.2,
+                  width: deviceHeight * 0.8,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFf5f4ed),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: deviceHeight * 0.01,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: deviceWidth * 0.07,
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image.network(
+                              'https://googleflutter.com/sample_image.jpg',
+                              height: 60.0,
+                              width: 60.0,
+                            ),
+                          ),
+                          SizedBox(
+                            width: deviceWidth * 0.03,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
+                                child: Text("${ambulance['driver_name']}",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: deviceHeight * 0.025,
+                                        fontWeight: FontWeight.bold)),
+                                alignment: Alignment.centerLeft,
+                              ),
+                              Align(
+                                child: Text(
+                                    "${ambulance['driver_mobile_number']}",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: deviceHeight * 0.020,
+                                        fontWeight: FontWeight.bold)),
+                                alignment: Alignment.centerLeft,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: deviceWidth * 0.18,
+                          ),
+                          Icon(
+                            Icons.info_outline_rounded,
+                            color: Colors.black,
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25.0),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>BookAmbulance()));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: AppColors.mainColor,
+                                borderRadius: BorderRadius.circular(10.0)),
+                            height: deviceHeight * 0.04,
+                            width: deviceWidth * 0.4,
+                            child: Center(
+                                child: Text(
+                                  "Book Ambulance",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: deviceHeight * 0.018),
+                                )),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+          ],
+        ),
+      );
+      cont.add(x);
+    }
+    return cont;
+  }
+
   @override
   void initState() {
-    FirebaseFirestore.instance
-        .collection('ambulances')
-        .snapshots()
-        .forEach((element) {
-      element.docs.forEach((eler) {
-        // if(getDistance(eler['latitude'], eler['longitude']) as bool){
-        //   print("okkkkkkkkkkkkkkkplplplplplplplpl");
-        //   alldata.add(eler);
-        // }
-        print("okokokokokokok12121212");
-        print(getDistance(eler['latitude'], eler['longitude']) as bool);
-      });
-    });
+    super.initState();
+    getDatabseList();
   }
 
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
+    print("ac${NearAmbulanceList.length}");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
-        title: Text("Home Page"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Home Page"),
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => range_selector()));
+              },
+              child: Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/image/slider.png"),
+                        fit: BoxFit.cover,
+                      ))),
+            )
+          ],
+        ),
       ),
       backgroundColor: Colors.white,
-      body: Container(
-        child: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('ambulances').snapshots(),
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return CircularProgressIndicator();
-            } else {
-              return ListView(
-                children: snapshot.data!.docs.map((document) {
-                  var longitude = document["longitude"];
-                  var latitude = document["latitude"];
-                  print(alldata);
-                    return Container(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0 , right: 10.0 , top: 30.0),
-                            child: Container(
-                              height: deviceHeight * 0.1,
-                              width: deviceWidth*0.8,
-
-                              decoration: BoxDecoration(color: AppColors.mainColor,
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(25.0) ,topLeft: Radius.circular(25.0)),),
-
-                              child: Column(
-
-                                children: [
-                                  Container(
-                                    height: deviceHeight*0.05,
-                                    width: deviceWidth*0.8,
-
-                                    child: Row(
-
-
-                                      children: [
-                                        SizedBox(width: deviceWidth*0.07,),
-                                        Text("Book Ambulance" , style: TextStyle(
-                                            color: Colors.white , fontSize: deviceHeight*0.02
-                                        ),),
-                                        SizedBox(width: deviceWidth*0.25,),
-                                        IconButton(onPressed: (){}, icon: Icon(Icons.wysiwyg_outlined ,
-                                          color: Colors.white,))
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [SizedBox(width: deviceWidth*0.08,),
-                                      Container(height: deviceHeight*0.05,
-
-                                        child: Align(alignment : Alignment.topLeft,child: Text("Hospital name" , style: TextStyle(color: Colors.white),)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30.0 , right: 30.0 ),
-                            child: Container(
-                              height: deviceHeight*0.2,
-                              width: deviceHeight*0.8 ,
-
-
-                    decoration: BoxDecoration(
-                      color: Color(0xFFf5f4ed),
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25) , bottomRight: Radius.circular(25) ,),
-                    ),
-                              child: Column(
-                                children: [
-                                  SizedBox(height: deviceHeight*0.01,),
-                                  Row(
-                                  children: [
-                                    SizedBox(width: deviceWidth*0.07,),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(20.0),
-                                      child:
-                                      Image.network('https://googleflutter.com/sample_image.jpg' , height: 60.0,width: 60.0,),
-                                    ),
-                                    SizedBox(width: deviceWidth*0.03,),
-                                    Column(children: [
-                                        Align(child: Text("Peterson"  ,style : TextStyle(color: Colors.black , fontSize: deviceHeight*0.025 , fontWeight: FontWeight.bold)),alignment: Alignment.centerLeft,),
-                                        Align(child: Text("Peterson"  ,style : TextStyle(color: Colors.black , fontSize: deviceHeight*0.020 , fontWeight: FontWeight.bold)) , alignment: Alignment.centerLeft,),
-                                                ],
-                                    ),
-                                    SizedBox(width: deviceWidth*0.18,),
-                                    Icon(Icons.info_outline_rounded , color: Colors.black,)
-
-                                  ],
-
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 25.0),
-                                    child: Container(
-
-                      decoration: BoxDecoration(
-                        color: AppColors.mainColor,
-
-                        borderRadius: BorderRadius.circular(10.0)
-
-                                    ),
-                                      height: deviceHeight*0.04,
-                                      width: deviceWidth*0.4,
-
-                                      child : Center(child: Text("Book Ambulance",
-                                      style: TextStyle(
-                                        color: Colors.white , fontWeight: FontWeight.bold,
-                                         fontSize: deviceHeight*0.018
-                                      ),)),
-                                    ),
-                                  )
-                              ],
-                                )
-                              ),
-                          ),
-
-                        ],
-                      ),
-                    );
-                }).toList(),
-              );
-            }
-          },
+      body: SingleChildScrollView(
+        child: Column(
+          children: getNearesAmbulances(deviceHeight, deviceWidth),
         ),
       ),
       floatingActionButton: FloatingActionButton(
