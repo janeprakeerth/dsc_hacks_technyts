@@ -212,21 +212,24 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 25.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.mainColor,
-                              borderRadius: BorderRadius.circular(10.0)),
-                          height: deviceHeight * 0.04,
-                          width: deviceWidth * 0.4,
-                          child: Center(
-                              child: Text(
-                            "Book Ambulance",
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: deviceHeight * 0.018),
-                          )),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: AppColors.mainColor,
+                                borderRadius: BorderRadius.circular(10.0)),
+                            height: deviceHeight * 0.04,
+                            width: deviceWidth * 0.4,
+                            child: Center(
+                                child: Text(
+                              "Book Ambulance",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: deviceHeight * 0.018),
+                            )),
+                          ),
                         ),
                       )
                     ],
