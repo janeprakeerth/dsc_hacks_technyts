@@ -4,6 +4,7 @@ import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,9 +14,53 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Position? currentUserPosition;
+
+  Future<bool> getDistance(double lat, double long) async {
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    currentUserPosition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(currentUserPosition!.latitude);
+    print(currentUserPosition!.longitude);
+
+    double dist_in_metre = Geolocator.distanceBetween(
+        currentUserPosition!.latitude,
+        currentUserPosition!.longitude,
+        lat,
+        long);
+    print("okok$dist_in_metre");
+    if (dist_in_metre > 5000) {
+      return false;
+    } else {
+      print("returned trueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+      return true;
+    }
+  }
+
   var selected_num = 0;
+  List<QueryDocumentSnapshot> alldata = [];
+  @override
+  void initState() {
+    FirebaseFirestore.instance
+        .collection('ambulances')
+        .snapshots()
+        .forEach((element) {
+      element.docs.forEach((eler) {
+        // if(getDistance(eler['latitude'], eler['longitude']) as bool){
+        //   print("okkkkkkkkkkkkkkkplplplplplplplpl");
+        //   alldata.add(eler);
+        // }
+        print("okokokokokokok12121212");
+        print(getDistance(eler['latitude'], eler['longitude']) as bool);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
@@ -30,7 +75,43 @@ class _HomePageState extends State<HomePage> {
           } else {
             return ListView(
               children: snapshot.data!.docs.map((document) {
-                return Text(document["latitude"].toString());
+                var longitude = document["longitude"];
+                var latitude = document["latitude"];
+                print(alldata);
+                return Container(
+                  width: double.maxFinite,
+                  height: deviceHeight / 7.56,
+                  color: Colors.blue,
+                  margin: EdgeInsets.only(
+                      left: deviceWidth / 18,
+                      right: deviceWidth / 18,
+                      top: deviceHeight / 7.56),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text("Sunshne Hospitals"),
+                      ),
+                      Container(
+                        child: Text("Driver Name"),
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_city_outlined,
+                            color: Colors.black,
+                          ),
+                          SizedBox(
+                            width: deviceWidth / 36,
+                          ),
+                          Container(
+                            child: Text("Address"),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                );
               }).toList(),
             );
           }
