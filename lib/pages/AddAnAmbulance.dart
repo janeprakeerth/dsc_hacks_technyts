@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_hacks_technyts/pages/GoogleMaps.dart';
 import 'package:dsc_hacks_technyts/pages/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -206,19 +207,19 @@ class _AddAnAmbulanceState extends State<AddAnAmbulance> {
             ),
             InkWell(
               onTap: () async {
-                CollectionReference ambulance =
-                    await FirebaseFirestore.instance.collection("ambulances");
                 try {
-                  await ambulance.add({
-                    'hospital_name': name_hospital_controller.text,
-                    'driver_name': name_drive_controller.text,
-                    'driver_mobile_number':
-                        driver_mobile_number_controller.text,
-                    'vehicle_number': vehichle_number_controller.text,
-                    'hospital_address': hospital_address_controller.text
-                  });
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GoogleMaps(
+                                name_of_hospital: name_hospital_controller.text,
+                                name_of_driver: name_drive_controller.text,
+                                driver_mobile_number:
+                                    driver_mobile_number_controller.text,
+                                vehicle_number: vehichle_number_controller.text,
+                                hosptal_address:
+                                    hospital_address_controller.text,
+                              )));
                 } catch (error) {
                   print(error.toString());
                 }
@@ -235,7 +236,7 @@ class _AddAnAmbulanceState extends State<AddAnAmbulance> {
                 ),
                 child: Center(
                   child: Text(
-                    "Submit",
+                    "Continue",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w600),
                   ),
