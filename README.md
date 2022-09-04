@@ -3,8 +3,12 @@
 ## Problem Statement
 Today, if there is an emergency, you must phone the hospital or the emergency services number, and an ambulance will be sent to your area. We have developed a live tracking software similar to Uber or Ola where a person can quickly book an ambulance by providing the specifics of their emergency. Ambulances can utilise the platform to determine the best path to the closest hospital. It can be connected such that everyone who has the app receives a message that an ambulance is approaching their street, allowing them to keep the lane clear.
 
-## Download our APP from the following link:
+## Download our APP APK from the following link:
 https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sharing
+
+## Web Link:
+https://sai-kumar-kanuri.github.io/Google-Map--Clone-/
+![](./Screenshots Aid for life/AID's for LIFE.png)
 
 ## Project PPT link:
 https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25UBdo/edit?usp=sharing
