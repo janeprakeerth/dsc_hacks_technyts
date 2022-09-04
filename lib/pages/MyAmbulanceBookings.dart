@@ -1,3 +1,4 @@
+import 'package:dsc_hacks_technyts/pages/webview_track.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,6 +30,7 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
     super.initState();
     getDatabseBookingList();
   }
+
   List<Container> getBookings() {
     List<Container> cont = [];
     for (int i = 0; i < bookingList.length; i++) {
@@ -37,27 +39,27 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
         height: 230,
         child: Stack(
           children: [
-            Positioned(child: Material(
-              child: Container(
-                  height: 180,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0.0),
-                    boxShadow: [
-                      new BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
-                          offset: new Offset(-10.0, 10.0),
-                          blurRadius: 20.0,
-                          spreadRadius: 4.0)],
-
-                  )
+            Positioned(
+              child: Material(
+                child: Container(
+                    height: 180,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(0.0),
+                      boxShadow: [
+                        new BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: new Offset(-10.0, 10.0),
+                            blurRadius: 20.0,
+                            spreadRadius: 4.0)
+                      ],
+                    )),
               ),
             ),
-            ),
             Positioned(
-                top : 0,
-                left : 30,
+                top: 0,
+                left: 30,
                 child: Card(
                   elevation: 10.0,
                   shadowColor: Colors.grey.withOpacity(0.5),
@@ -75,11 +77,10 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
                       ),
                     ),
                   ),
-
                 )),
             Positioned(
                 top: 60,
-                left : 200,
+                left: 200,
                 child: Container(
                   height: 150,
                   width: 160,
@@ -87,20 +88,39 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(bookings['DriverName']  ,style: TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 20 , color: AppColors.mainColor
-                      ),)
-                      , Text(bookings['DriverMobileNumber']  ,style: TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 16 , color: Colors.grey
-                      ),)
-                      , Divider(color: Colors.black,),
-                      Text(bookings['HospitalName']   ,style: TextStyle(fontWeight: FontWeight.bold,
-                          fontSize: 16 , color: AppColors.mainColor
-                      ),),
-                      SizedBox(height: 10,)
-                      ,InkWell(
-                        onTap: (){
-                          print("inkwell tapped");
+                      Text(
+                        bookings['DriverName'],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: AppColors.mainColor),
+                      ),
+                      Text(
+                        bookings['DriverMobileNumber'],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.grey),
+                      ),
+                      Divider(
+                        color: Colors.black,
+                      ),
+                      Text(
+                        bookings['HospitalName'],
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: AppColors.mainColor),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WebViewTrack()));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -110,17 +130,15 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
                           width: 80,
                           child: Center(
                               child: Text(
-                                "Track",
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10),
-                              )),
+                            "Track",
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10),
+                          )),
                         ),
                       ),
-
-
                     ],
                   ),
                 ))
@@ -135,7 +153,7 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width =  MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
 
     //print(FirebaseAuth.instance.currentUser?.email.toString());
     print(bookingList.toString());
@@ -154,35 +172,35 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
             child: Stack(
               children: [
                 Positioned(
-                  top : 80,
-                    left : 0,
+                    top: 80,
+                    left: 0,
                     child: Container(
-                        height: 100,
+                      height: 100,
                       width: 300,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        )
-                      ),
-                )),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50),
+                          )),
+                    )),
                 Positioned(
-                    top : 110,
-                    left : 20,
-                    child: Text("Your Bookings" , style: TextStyle(
-                  fontSize: 25 , color  : AppColors.mainColor
-                ),))
+                    top: 110,
+                    left: 20,
+                    child: Text(
+                      "Your Bookings",
+                      style:
+                          TextStyle(fontSize: 25, color: AppColors.mainColor),
+                    ))
               ],
             ),
           ),
-          SizedBox(height: height*0.05,),
+          SizedBox(
+            height: height * 0.05,
+          ),
           Column(
             children: getBookings(),
           )
-
-
-
         ],
       ),
     );
