@@ -6,6 +6,9 @@ Today, if there is an emergency, you must phone the hospital or the emergency se
 ## Download our APP from the following link:
 https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sharing
 
+## Project PPT link:
+https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25UBdo/edit?usp=sharing
+
 ## App Features
 * **Convenient** to use & find an ambulance nearby your location for elective or emergency booking.
 * Selects **shortest** and the **quickest** path for the hospital.
