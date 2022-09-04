@@ -20,7 +20,7 @@ https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25U
 * **One-Touch Emergency Booking** Easily book emergency ambulance with a press of a button
 
 ### Screenshots
-![](/Screenshots Aid for life/app2.jpeg)
+![](/Screenshots%20Aid%20for%20life/app2.jpeg)
 ![](/Screenshots%20Aid%20for%20life/app3.jpeg)
 ![](/Screenshots%20Aid%20for%20life/app%201.jpeg)
 
