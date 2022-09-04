@@ -7,7 +7,7 @@ Today, if there is an emergency, you must phone the hospital or the emergency se
 https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sharing
 
 ## Web Link:
-https://sai-kumar-kanuri.github.io/Google-Map--Clone-/
+
 ![](/Screenshots%20Aid%20for%20life/AID's%20for%20LIFE.png)
 
 ## Project PPT link:
