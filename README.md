@@ -19,6 +19,11 @@ https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25U
 * **Book ambulance for others**.Be a good samaritan & help other patients or victims who need emergency medical services.
 * **One-Touch Emergency Booking** Easily book emergency ambulance with a press of a button
 
+### Screenshots
+![](/Screenshots Aid for life/app2.jpeg)
+![](/Screenshots%20Aid%20for%20life/app3.jpeg)
+![](/Screenshots%20Aid%20for%20life/app%201.jpeg)
+
 ## How to use?
 AMBULANCE BOOKING IN JUST FEW SECONDS:
 1. Install the app from the APK from link provided above.
@@ -26,10 +31,13 @@ AMBULANCE BOOKING IN JUST FEW SECONDS:
 3. Chooses your nearest hospital or destination your willing to go.
 4. Avail our ambulance within minutes.
 
-# Other Features
+## Other Features
 Disease prediction from symptoms:
 * Classical diagnosis method is a process where the patient has to visit a doctor, undergo various medical test and then come to a conclusion.This process is very time consuming.
 * To save the time required and also money for initial process of diagnosis symptoms, this project proposes an automated disease prediction system that relies on user   input.The system takes input from user and provides a list of probable diseases.
+### Screenshots:
+![](/Screenshots%20Aid%20for%20life/Screenshot%20(738).png)
+
 
 
 
