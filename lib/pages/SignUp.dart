@@ -180,7 +180,7 @@ class _SignUpState extends State<SignUp> {
                     await FirebaseFirestore.instance.collection("users");
                 String? uid = user.user?.uid.toString();
                 try {
-                  await users.add({
+                  await users.doc(uid).set({
                     'email': emailcontroller.text,
                     'password': password.text,
                     'username': username.text,

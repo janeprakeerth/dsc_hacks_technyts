@@ -2,8 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dsc_hacks_technyts/DatabseManger/databasemanager.dart';
 import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
+import 'package:dsc_hacks_technyts/pages/BookAmbulance.dart';
+import 'package:dsc_hacks_technyts/pages/Login.dart';
 import 'package:dsc_hacks_technyts/pages/range_selector.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -96,25 +99,24 @@ class _HomePageState extends State<HomePage> {
                       topLeft: Radius.circular(25.0)),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+
                   children: [
                     Container(
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.8,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            width: deviceWidth * 0.07,
-                          ),
+
                           Text(
-                            "${ambulance['hospital_name']}",
+                            "       ${ambulance['hospital_name']}",
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: deviceHeight * 0.02),
                           ),
-                          SizedBox(
-                            width: deviceWidth * 0.25,
-                          ),
+
                           IconButton(
                               onPressed: () {},
                               icon: Icon(
@@ -213,7 +215,9 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 25.0),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>BookAmbulance(HospitalName: ambulance['hospital_name'],HospitalAddress: ambulance['hospital_address'],DriverName: ambulance['driver_name'],DriverMobileNumber: ambulance['driver_mobile_number'],HospitalLatitude:ambulance['latitude'] ,HospitalLongitude: ambulance['longitude'],UserLatitude: currentUserPosition?.latitude.toString(),UserLongitude: currentUserPosition?.longitude.toString() as String,VehicleNumber: ambulance['vehicle_number'],)));
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                                 color: AppColors.mainColor,
@@ -260,7 +264,11 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Home Page"),
+            Row(
+              children: [
+                Text("Home Page"),
+              ],
+            ),
             InkWell(
               onTap: () {
                 Navigator.push(context,
