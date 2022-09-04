@@ -9,6 +9,8 @@ https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sha
 
 ## Web Link:
 https://janeprakeerth.github.io/dsc_hacks_technyts/
+
+### Screenshot
 ![](/Screenshots%20Aid%20for%20life/web%20page.png)
 
 ## Project PPT link:
