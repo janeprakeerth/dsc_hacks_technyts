@@ -8,7 +8,7 @@ https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sha
 
 ## Web Link:
 https://sai-kumar-kanuri.github.io/Google-Map--Clone-/
-![](/blob/master/Screenshots%20Aid%20for%20life/AID's%20for%20LIFE.png)
+![](./blob/master/Screenshots%20Aid%20for%20life/AID's%20for%20LIFE.png)
 
 ## Project PPT link:
 https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25UBdo/edit?usp=sharing
