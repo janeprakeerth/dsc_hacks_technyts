@@ -7,8 +7,8 @@ Today, if there is an emergency, you must phone the hospital or the emergency se
 https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sharing
 
 ## Web Link:
-
-![](/Screenshots%20Aid%20for%20life/AID's%20for%20LIFE.png)
+https://janeprakeerth.github.io/dsc_hacks_technyts/
+![](/Screenshots%20Aid%20for%20life/web%20page.png)
 
 ## Project PPT link:
 https://docs.google.com/presentation/d/1waMjZ5YHsJsJiSs5xji794O_6n4a7Ly5QEHxW25UBdo/edit?usp=sharing
