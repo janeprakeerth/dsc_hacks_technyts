@@ -4,6 +4,7 @@ import 'package:dsc_hacks_technyts/DatabseManger/databasemanager.dart';
 import 'package:dsc_hacks_technyts/pages/AddAnAmbulance.dart';
 import 'package:dsc_hacks_technyts/pages/BookAmbulance.dart';
 import 'package:dsc_hacks_technyts/pages/Login.dart';
+import 'package:dsc_hacks_technyts/pages/MyAmbulanceBookings.dart';
 import 'package:dsc_hacks_technyts/pages/range_selector.dart';
 import 'package:dsc_hacks_technyts/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -100,7 +101,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-
                   children: [
                     Container(
                       height: deviceHeight * 0.05,
@@ -108,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           Text(
                             "       ${ambulance['hospital_name']}",
                             overflow: TextOverflow.ellipsis,
@@ -116,7 +115,6 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                                 fontSize: deviceHeight * 0.02),
                           ),
-
                           IconButton(
                               onPressed: () {},
                               icon: Icon(
@@ -216,7 +214,30 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.only(top: 25.0),
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>BookAmbulance(HospitalName: ambulance['hospital_name'],HospitalAddress: ambulance['hospital_address'],DriverName: ambulance['driver_name'],DriverMobileNumber: ambulance['driver_mobile_number'],HospitalLatitude:ambulance['latitude'] ,HospitalLongitude: ambulance['longitude'],UserLatitude: currentUserPosition?.latitude.toString(),UserLongitude: currentUserPosition?.longitude.toString() as String,VehicleNumber: ambulance['vehicle_number'],)));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BookAmbulance(
+                                          HospitalName:
+                                              ambulance['hospital_name'],
+                                          HospitalAddress:
+                                              ambulance['hospital_address'],
+                                          DriverName: ambulance['driver_name'],
+                                          DriverMobileNumber:
+                                              ambulance['driver_mobile_number'],
+                                          HospitalLatitude:
+                                              ambulance['latitude'],
+                                          HospitalLongitude:
+                                              ambulance['longitude'],
+                                          UserLatitude: currentUserPosition
+                                              ?.latitude
+                                              .toString(),
+                                          UserLongitude: currentUserPosition
+                                              ?.longitude
+                                              .toString() as String,
+                                          VehicleNumber:
+                                              ambulance['vehicle_number'],
+                                        )));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -308,6 +329,10 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             selected_num = index;
           });
+          if (index == 2) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyAmbulanceBookings()));
+          }
         },
         items: [
           Icon(Icons.home_outlined,
