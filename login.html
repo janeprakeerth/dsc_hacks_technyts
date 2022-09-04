@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login" style="padding-top: 120px;" method="post" action="/login">
+                    <div class="login__field">
+                        <i class="login__icon fa-solid fa-user"></i>
+                        <input type="text" name="newUserName" required autofocus class="login__input" placeholder="Username" autocomplete="off">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fa-solid fa-lock"></i>
+                        <input type="password"  id="passwordInput" required autocomplete="off" name="newPassword" class="login__input" placeholder="Password">
+                    </div>
+                    <button class="button login__submit" type="submit" name="login">
+                        <span class="button__text">Log In Now</span>
+                        <i class="button__icon fa-solid fa-chevron-right"></i>
+                    </button>			
+                    <span id="logo">Aid for Life</span>	
+
+                    <p  > Don't have an account ? <br><a href="/signUp">Register Here</a>  </p>
+                </form>
+
+                
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+</body>
+</html>
