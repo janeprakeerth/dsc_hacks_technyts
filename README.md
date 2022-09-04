@@ -1,4 +1,5 @@
 # Team TechNyts - Aid for Life
+![](/Screenshots%20Aid%20for%20life/AID's%20for%20LIFE.png)
 
 ## Problem Statement
 Today, if there is an emergency, you must phone the hospital or the emergency services number, and an ambulance will be sent to your area. We have developed a live tracking software similar to Uber or Ola where a person can quickly book an ambulance by providing the specifics of their emergency. Ambulances can utilise the platform to determine the best path to the closest hospital. It can be connected such that everyone who has the app receives a message that an ambulance is approaching their street, allowing them to keep the lane clear.
