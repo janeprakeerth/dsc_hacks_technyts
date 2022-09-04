@@ -1,6 +1,4 @@
-# Team TechNyts
-
-# Aid for Life
+# Team TechNyts - Aid for Life
 
 ## Problem Statement
 Today, if there is an emergency, you must phone the hospital or the emergency services number, and an ambulance will be sent to your area. We have developed a live tracking software similar to Uber or Ola where a person can quickly book an ambulance by providing the specifics of their emergency. Ambulances can utilise the platform to determine the best path to the closest hospital. It can be connected such that everyone who has the app receives a message that an ambulance is approaching their street, allowing them to keep the lane clear.
@@ -9,10 +7,10 @@ Today, if there is an emergency, you must phone the hospital or the emergency se
 https://drive.google.com/drive/folders/17Yu9LlO70FmNw1SClEZoNI-g7YsEoDE6?usp=sharing
 
 ## App Features
-**Convenient** to use & find an ambulance nearby your location for elective or emergency booking.
-Selects **shortest** and the **quickest** path for the hospital.
-**Book ambulance for others**.Be a good samaritan & help other patients or victims who need emergency medical services.
-**One-Touch Emergency Booking** Easily book emergency ambulance with a press of a button
+* **Convenient** to use & find an ambulance nearby your location for elective or emergency booking.
+* Selects **shortest** and the **quickest** path for the hospital.
+* **Book ambulance for others**.Be a good samaritan & help other patients or victims who need emergency medical services.
+* **One-Touch Emergency Booking** Easily book emergency ambulance with a press of a button
 
 ## How to use?
 AMBULANCE BOOKING IN JUST FEW SECONDS:
