@@ -84,62 +84,64 @@ class _MyAmbulanceBookingsState extends State<MyAmbulanceBookings> {
                 child: Container(
                   height: 150,
                   width: 160,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        bookings['DriverName'],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: AppColors.mainColor),
-                      ),
-                      Text(
-                        bookings['DriverMobileNumber'],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.grey),
-                      ),
-                      Divider(
-                        color: Colors.black,
-                      ),
-                      Text(
-                        bookings['HospitalName'],
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: AppColors.mainColor),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => WebViewTrack()));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.mainColor,
-                              borderRadius: BorderRadius.circular(10.0)),
-                          height: 20,
-                          width: 80,
-                          child: Center(
-                              child: Text(
-                            "Track",
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10),
-                          )),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          bookings['DriverName'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: AppColors.mainColor),
                         ),
-                      ),
-                    ],
+                        Text(
+                          bookings['DriverMobileNumber'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.grey),
+                        ),
+                        Divider(
+                          color: Colors.black,
+                        ),
+                        Text(
+                          bookings['HospitalName'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: AppColors.mainColor),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => WebViewTrack()));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: AppColors.mainColor,
+                                borderRadius: BorderRadius.circular(10.0)),
+                            height: 20,
+                            width: 80,
+                            child: Center(
+                                child: Text(
+                              "Track",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10),
+                            )),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ))
           ],
