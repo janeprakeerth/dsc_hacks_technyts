@@ -38,6 +38,10 @@ AMBULANCE BOOKING IN JUST FEW SECONDS:
 Disease prediction from symptoms:
 * Classical diagnosis method is a process where the patient has to visit a doctor, undergo various medical test and then come to a conclusion.This process is very time consuming.
 * To save the time required and also money for initial process of diagnosis symptoms, this project proposes an automated disease prediction system that relies on user   input.The system takes input from user and provides a list of probable diseases.
+
+#### NOTE: 
+- The below image is just for demonstration purpose the actual UI for entering the symptoms would be different.
+
 ### Screenshots:
 ![](/Screenshots%20Aid%20for%20life/Screenshot%20(738).png)
 
